@@ -1,0 +1,24 @@
+﻿html {
+    background-color: #363C43;
+    background-image: url(/img/low_contrast_linen_@2X.png);
+}
+
+.action-link {
+    margin-top: emCalc(20px);
+}
+
+.banner-title {
+    background-color: $maroon;
+}
+
+.content {
+    padding: emCalc(15px) emCalc(30px);
+}
+
+.view-background {
+    background-color: rgba(51,51,51,0.75);
+    box-shadow: 3px 3px 3px 3px rgba(0,0,0,.098),-3px 3px 3px 3px rgba(0,0,0,.098);
+    margin: emCalc(25px) 0;
+    border-radius: $global-radius; 
+}
+

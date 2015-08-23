@@ -1,0 +1,46 @@
+﻿fieldset {
+    background-color: $steel;
+    border-color: $orange;
+    border-radius: $global-radius;
+
+    h3 {
+        margin-bottom: emCalc(25px);
+    }
+
+    .button {
+        margin-bottom: 0;
+    }
+}
+
+.details, .dashed {
+    span {
+        display: block;
+        margin-bottom: emCalc(25px);
+    }
+
+    span.details-label {
+        @extend label;
+        margin-bottom: emCalc(5px);
+    }
+}
+
+.dashed {
+    border-style: dashed;
+
+    span {
+        margin-bottom: 0;
+    }
+    
+    .numbers {
+        margin-bottom: emCalc(10px);
+    }
+} 
+
+fieldset.error {
+    background-color: $alert-color;
+    border-color: $ghost;
+        
+    .validation-summary-errors {
+        color: $ghost;
+    }
+}

@@ -1,0 +1,16 @@
+﻿.input-panel {
+    border: $panel-border-size $panel-border-style $input-border-color;
+    margin-bottom: emCalc(20px);
+
+    .panel-heading {
+        background-color: $input-bg-color;
+        border-bottom: $panel-border-size $panel-border-style $input-border-color;
+        padding: emCalc(10px) emCalc(15px);
+        font-size: emCalc(16px);
+    }
+
+    .panel-body {
+        background-color: $aluminum;
+        padding: emCalc(20px);
+    }
+}

@@ -1,0 +1,234 @@
+﻿@model Surplus.Models.SurplusRequest
+
+<div class="banner-title hide-for-print">
+    <div class="content">
+        <h2>
+            Print the form below
+        </h2>
+    </div>
+</div>
+
+<div class="content">
+    <div class="row hide-for-print">
+        <div class="small-12 columns">
+
+            <fieldset>
+                <p>
+                    To complete this surplus request, you must:
+
+                    <ol>
+                        <li>
+                            Print the form.
+                        </li>
+
+                        <li>
+                            Attach a surplus label to identify
+                            the item.
+                        </li>
+
+                        <li>
+                            Obtain a department head or authorized
+                            signatory signature.
+                        </li>
+
+                        <li>
+                            Mail the form to Surplus Property
+                            (Mail Code: 0359).
+                        </li>
+                    </ol>
+                </p>
+
+                <button type="button" class="button radius"
+                        onclick="window.print()">
+                    Print form
+                </button>
+
+                <noscript>
+                    JavaScript is disabled in your browser.
+                    Select print from your browser window.
+                </noscript>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="row hide-for-print">
+        <div class="small-12 columns">
+            @Html.ActionLink("Create another request", "Create")
+        </div>
+    </div>
+
+    <div class="row details">
+        <div class="small-12 columns">
+            <fieldset>
+                <h3>
+                    Surplus request #@Html.DisplayFor(model => model.Id)
+                </h3>
+
+                <div class="row">
+                    <div class="small-12 columns">
+                        <span class="details-label">@Html.DisplayNameFor(model => model.VTBarcode)</span>
+                        <span>@Html.DisplayFor(model => model.VTBarcode)</span>
+
+                        <div class="row">
+                            <div class="small-12 medium-3 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.Description)</span>
+                                <span>@Html.DisplayFor(model => model.Description)</span>
+                            </div>
+
+                            <div class="small-12 medium-3 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.Manufacturer)</span>
+                                <span>@Html.DisplayFor(model => model.Manufacturer)</span>
+                            </div>
+
+                            <div class="small-12 medium-3 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.Model)</span>
+                                <span>@Html.DisplayFor(model => model.Model)</span>
+                            </div>
+
+                            <div class="small-12 medium-3 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.SerialNumber)</span>
+                                <span>@Html.DisplayFor(model => model.SerialNumber)</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="small-12 medium-3 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.Quantity)</span>
+                                <span>
+                                    @Html.DisplayFor(model => model.Quantity)
+                                    (@Html.DisplayFor(model => model.QuantityDescription.Name))
+                                </span>
+                            </div>
+
+                            <div class="small-12 medium-3 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.EstimatedValue)</span>
+                                <span>@Html.DisplayFor(model => model.EstimatedValue)</span>
+                            </div>
+
+                            <div class="small-12 medium-3 columns end">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.ItemCondition.Name)</span>
+                                <span>@Html.DisplayFor(model => model.ItemCondition.Name)</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="small-12 medium-3 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.Building)</span>
+                                <span>
+                                    @Html.DisplayFor(model => model.FloorLevel)
+                                    @Html.DisplayFor(model => model.Building)
+                                </span>
+                            </div>
+
+                            <div class="small-12 medium-3 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.DepartmentNumber)</span>
+                                <span>@Html.DisplayFor(model => model.DepartmentNumber)</span>
+                            </div>
+
+                            <div class="small-12 medium-6 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.DepartmentDescription)</span>
+                                <span>@Html.DisplayFor(model => model.DepartmentDescription)</span>
+                            </div>
+                        </div>
+
+                        @if (!String.IsNullOrWhiteSpace(Model.AdditionalDetails))
+                        {
+                            <div class="row">
+                                <div class="small-12 columns">
+                                    <span class="details-label">@Html.DisplayNameFor(model => model.AdditionalDetails)</span>
+                                    <span>
+                                        @Html.DisplayFor(model => model.AdditionalDetails)
+                                    </span>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="row">
+                            <div class="small-12 medium-3 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.ContactName)</span>
+                                <span>@Html.DisplayFor(model => model.ContactName)</span>
+                            </div>
+
+                            <div class="small-12 medium-3 columns end">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.ContactPhone)</span>
+                                <span>@Html.DisplayFor(model => model.ContactPhone)</span>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="small-12 medium-8 columns">
+                                <span class="details-label">@Html.DisplayNameFor(model => model.AuthorizerName)</span>
+                                <span>@Html.DisplayFor(model => model.AuthorizerName)</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="small-12 medium-8 columns">
+                                <div class="input-panel">
+                                    <div class="panel-heading">
+                                        Authorizer signature
+                                    </div>
+
+                                    <div class="panel-body">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="small-12 medium-4 columns">
+                                <div class="input-panel">
+                                    <div class="panel-heading">
+                                        Date
+                                    </div>
+
+                                    <div class="panel-body">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+<fieldset class="dashed hide show-for-print">
+    <div class="row numbers">
+        <div class="small-12 columns">
+            <div class="row">
+                <div class="small-12 medium-6 columns">
+                    <span>Surplus request #@Html.DisplayFor(model => model.Id)</span>
+                </div>
+
+                <div class="small-12 medium-6 columns">
+                    <span>VT# @Html.DisplayFor(model => model.VTBarcode)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 medium-3 columns">
+            <span class="details-label">@Html.DisplayNameFor(model => model.Description)</span>
+            <span>@Html.DisplayFor(model => model.Description)</span>
+        </div>
+
+        <div class="small-12 medium-3 columns">
+            <span class="details-label">@Html.DisplayNameFor(model => model.Manufacturer)</span>
+            <span>@Html.DisplayFor(model => model.Manufacturer)</span>
+        </div>
+
+        <div class="small-12 medium-3 columns">
+            <span class="details-label">@Html.DisplayNameFor(model => model.Model)</span>
+            <span>@Html.DisplayFor(model => model.Model)</span>
+        </div>
+
+        <div class="small-12 medium-3 columns">
+            <span class="details-label">@Html.DisplayNameFor(model => model.SerialNumber)</span>
+            <span>@Html.DisplayFor(model => model.SerialNumber)</span>
+        </div>
+    </div>
+</fieldset>

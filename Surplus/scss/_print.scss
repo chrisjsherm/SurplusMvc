@@ -1,0 +1,7 @@
+﻿@media print {
+  @for $i from 1 through $total-columns {
+    .large-#{$i} {
+      width: percentage($i / $total-columns);
+    }
+  }
+}

@@ -1,0 +1,243 @@
+﻿@model Surplus.Models.SurplusRequest
+
+<div class="banner-title">
+    <div class="content">
+        <h2>
+            Surplus property form
+        </h2>
+    </div>
+</div>
+
+<div class="content">
+    <div class="row">
+        <div class="small-12 columns">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <fieldset class="error">
+                    <p>
+                        @Html.ValidationSummary(false, "Houston, we have a problem.", new { @class = "error-message" })
+                    </p>
+                </fieldset>
+            }
+            
+            <fieldset>
+                <h3>
+                    Instructions
+                </h3>
+
+                <p>
+                    Create a surplus property disposal request by
+                    completing the form below. Once the request
+                    is created, it should be printed, signed and
+                    mailed to Surplus Property (mail code 0359). A
+                    surplus label to identify the item should be
+                    attached to each item surplused.
+                </p>
+
+                <p>
+                    <ul>
+                        <li>
+                            A separate request must be completed
+                            for each Virginia Tech asset (i.e. barcoded item).
+                        </li>
+                        <li>
+                            Non-Virginia Tech assets may be grouped
+                            on the same request, provided they are like
+                            items (i.e. chairs on one request,
+                            file cabinets on one request, etc.).
+
+                            <ul>
+                                <li>
+                                    For non-assets, use "N/A" in the Virginia Tech asset number 
+                                    field.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Required fields are indicated with a red asterisk.
+                        </li>
+                    </ul>
+                </p>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 columns">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <fieldset>
+                    <h3>
+                        Property details
+                    </h3>
+
+                    <div class="row">
+                        <div class="small-12 medium-6 columns end">
+                            @Html.LabelFor(x => x.VTBarcode, new { @class = "required" })
+
+                            <div class="row collapse">
+                                <div class="small-3 medium-2 columns">
+                                    <span class="prefix">
+                                        VT
+                                    </span>
+                                </div>
+
+                                <div class="small-9 medium-6 columns end">
+                                    @Html.EditorFor(x => x.VTBarcode)
+                                    @Html.ValidationMessageFor(x => x.VTBarcode)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-12 columns">
+                            @Html.LabelFor(x => x.Description, new { @class = "required" })
+                            @Html.EditorFor(x => x.Description)
+                            @Html.ValidationMessageFor(x => x.Description)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-12 medium-4 columns">
+                            @Html.LabelFor(x => x.Manufacturer)
+                            @Html.EditorFor(x => x.Manufacturer)
+                            @Html.ValidationMessageFor(x => x.Manufacturer)
+                        </div>
+
+                        <div class="small-12 medium-4 columns">
+                            @Html.LabelFor(x => x.Model)
+                            @Html.EditorFor(x => x.Model)
+                            @Html.ValidationMessageFor(x => x.Model)
+                        </div>
+
+                        <div class="small-12 medium-4 columns">
+                            @Html.LabelFor(x => x.SerialNumber)
+                            @Html.EditorFor(x => x.SerialNumber)
+                            @Html.ValidationMessageFor(x => x.SerialNumber)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.Quantity)
+                            @Html.EditorFor(x => x.Quantity)
+                            @Html.ValidationMessageFor(x => x.Quantity)
+                        </div>
+
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.QuantityDescriptionId)
+                            @Html.DropDownList("QuantityDescriptionId")
+                            @Html.ValidationMessageFor(x => x.QuantityDescriptionId)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.EstimatedValue)
+
+                            <div class="row collapse">
+                                <div class="small-3 medium-2 columns">
+                                    <span class="prefix">
+                                        $
+                                    </span>
+                                </div>
+
+                                <div class="small-9 medium-6 columns end">
+                                    @Html.EditorFor(x => x.EstimatedValue)
+                                    @Html.ValidationMessageFor(x => x.EstimatedValue)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.ItemConditionId)
+                            @Html.DropDownList("ItemConditionId")
+                            @Html.ValidationMessageFor(x => x.ItemConditionId)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.Building, new { @class = "required" })
+                            @Html.EditorFor(model => model.Building,
+                    new { htmlAttributes = new { @class = "form-control phoenix-input" } })
+                            @Html.ValidationMessageFor(x => x.Building)
+                        </div>
+
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.FloorLevel, new { @class = "required" })
+                            @Html.EditorFor(model => model.FloorLevel,
+                    new { htmlAttributes = new { @class = "form-control phoenix-input" } })
+                            @Html.ValidationMessageFor(x => x.FloorLevel)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-12 columns">
+                            @Html.LabelFor(x => x.AdditionalDetails)
+                            @Html.EditorFor(x => x.AdditionalDetails)
+                            @Html.ValidationMessageFor(x => x.AdditionalDetails)
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <h3>
+                        Contact information
+                    </h3>
+
+                    <div class="row">
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.DepartmentNumber, new { @class = "required" })
+                            @Html.EditorFor(model => model.DepartmentNumber,
+                    new { htmlAttributes = new { @class = "form-control phoenix-input" } })
+                            @Html.ValidationMessageFor(x => x.DepartmentNumber)
+                        </div>
+
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.DepartmentDescription, new { @class = "required" })
+                            @Html.EditorFor(model => model.DepartmentDescription,
+                    new { htmlAttributes = new { @class = "form-control phoenix-input" } })
+                            @Html.ValidationMessageFor(x => x.DepartmentDescription)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.ContactName, new { @class = "required" })
+                            @Html.EditorFor(x => x.ContactName,
+                                new { htmlAttributes = new { @class = "form-control phoenix-input" } })
+                            @Html.ValidationMessageFor(x => x.ContactName)
+                        </div>
+
+                        <div class="small-12 medium-6 columns">
+                            @Html.LabelFor(x => x.ContactPhone, new { @class = "required" })
+                            @Html.EditorFor(model => model.ContactPhone, new
+                   {
+                       htmlAttributes = new
+                       {
+                           @class = "form-control phoenix-input"
+                       }
+                   })
+                            @Html.ValidationMessageFor(x => x.ContactPhone)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-12 medium-6 columns end">
+                            @Html.LabelFor(x => x.AuthorizerName, new { @class = "required" })
+                            @Html.EditorFor(model => model.AuthorizerName,
+                    new { htmlAttributes = new { @class = "form-control phoenix-input" } })
+                            @Html.ValidationMessageFor(x => x.AuthorizerName)
+                        </div>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="button radius">Submit</button>
+            }
+        </div>
+    </div>
+</div>

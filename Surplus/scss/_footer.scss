@@ -1,0 +1,12 @@
+﻿footer {
+    .copyright {
+        .columns {
+            color: $body-font-color;
+            font-size: 80%;
+        }
+
+        .small-attribution {
+            margin-top: emCalc(8px);
+        }
+    }
+}
